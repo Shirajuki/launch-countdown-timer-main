@@ -12,10 +12,188 @@ The designs were created to the following widths:
 	--neutral3: hsl(235, 16%, 14%); /* Very dark blue */
 	--neutral4: hsl(234, 17%, 12%); /* Very dark (mostly black )*/
 }
+* { padding: 0; margin: 0; box-sizing: border-box; }
 body {
 	font-size: 14px;
 	font-family: 'Red Hat Text', sans-serif;
-	background-color: var(--neutral4);
+	background-color: var(--neutral3);
 	color: var(--neutral1);
-	/* Weights: 700 */
+	background-image: url(images/bg-stars.svg);
+	max-width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	display: grid;
+	grid-template-rows: 80% 20%;
+}
+main {
+	margin-top: 130px;
+	text-align: center;
+}
+.countdown {
+	display: grid;
+	width: 80%;
+	margin: auto;
+	grid-template-columns: repeat(4,minmax(70px, 150px));
+	grid-gap: 40px;
+	align-content: center;
+	justify-content: center;
+}
+.card {
+	position: relative;
+	height: 150px;
+	width: 150px;
+	margin: 0 auto 10px auto;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: flex-end;
+	background-color: var(--neutral4);
+	border-radius: 8px;
+}
+.top, .bottom {
+	width: 100%;
+	height: 47%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+.bottom {
+	background-color: var(--neutral2);
+	border-radius: 0 0 8px 8px;
+	transform: translateY(-10px);
+}
+.bottom > h1 {
+	transform: translateY(-31%);
+}
+.bottom::after, .bottom::before, .top::after, .top::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0%;
+	transform: translateY(-50%);
+	width: 6px;
+	height: 12px;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+	background-color: var(--neutral4);
+}
+.bottom::before, .top::before {
+	left: auto;
+	right: 0;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
+.top::after, .top::before {
+	top: 100%;
+}
+.top {
+	position: absolute;
+	top: 0;
+	background-color: #2C2C44;
+	border-radius: 8px 8px 0 0;
+}
+.top > h1 {
+	transform: translateY(33%);
+	color: #D4506F;
+}
+h1 {
+	font-size: 5rem;
+	color: var(--primary2);
+}
+h2 {
+	margin-bottom: 8%;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	font-size: 1.2rem;
+}
+h3 {
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	font-size: 0.9rem;
+	color: var(--primary1);
+}
+footer {
+	position: relative;
+	width: 100%;
+	background: url(images/pattern-hills.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: -2;
+}
+footer > .social {
+	position: absolute;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+footer > .social > a {
+	margin: 0 16px;
+	transform: translateY(20px);
+}
+footer svg {
+	width: 20px;
+	height: 20px;
+}
+footer svg path {
+	transition-duration: .4s;
+}
+footer svg:hover path {
+	fill: var(--primary2);
+}
+@media only screen and (max-width: 375px) {
+  body {
+		font-size: 10px;
+  }
+	.card {
+		width: 70px;
+		height: 70px;
+		border-radius: 4px;
+	}
+	.top {
+		border-radius: 4px 4px 0 0;
+	}
+	.top > h1 {
+		transform: translateY(41%);
+	}
+	.bottom {
+		transform: translateY(-4px);
+		border-radius: 0 0 4px 4px;
+	}
+	.bottom > h1 {
+		transform: translateY(-35%);
+	}
+	.bottom::after, .bottom::before, .top::after, .top::before {
+		width: 4px;
+		height: 8px;
+		border-top-right-radius: 4px;
+		border-bottom-right-radius: 4px;
+	}
+	.bottom::before, .top::before {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+		border-top-left-radius: 4px;
+		border-bottom-left-radius: 4px;
+	}
+	.countdown {
+		grid-gap: 15px;
+	}
+	h1 {
+		font-size: 2rem;
+	}
+	h2 {
+		margin-bottom: 15%;
+	}
+	h3 {
+		font-size: 0.5rem;
+		letter-spacing: 4px;
+	}
+	footer {
+		background-position-x: 86%;
+	}
 }
