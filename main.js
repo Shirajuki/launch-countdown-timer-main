@@ -50,7 +50,7 @@ class Timer {
 // Init global values
 const date = new Date();
 let launch = new Date();
-launch.setTime(launch.getTime() + 3600 * 24 * 9 * 1000); // initial countdown timer
+launch.setTime(launch.getTime() + 3600 * 24 * 14 * 1000); // initial countdown timer
 console.log(launch);
 // Localstorage for saving countdown timer
 if (localStorage.getItem("countdown")) {
