@@ -61,7 +61,8 @@ main {
 .bottom {
 	background-color: var(--neutral2);
 	border-radius: 0 0 8px 8px;
-	transform: translateY(-10px);
+	margin-bottom: 10px;
+	transform-origin: center top;
 }
 .bottom > h1 {
 	transform: translateY(-31%);
@@ -89,11 +90,29 @@ main {
 .top::after, .top::before {
 	top: 100%;
 }
+.bottom::after, .bottom::before {
+	top: auto;
+	bottom: 45%;
+}
+.bottom.animate::after, .bottom.animate::before {
+	top: 0%;
+}
 .top {
 	position: absolute;
 	top: 0;
 	background-color: #2C2C44;
 	border-radius: 8px 8px 0 0;
+	transform-origin: center bottom;
+}
+.top.animate {
+	z-index: 1000;
+	animation: downflip 500ms linear 0ms 1 normal forwards;
+}
+.bottom.animate {
+	z-index: 1000;
+	animation: upflip 500ms linear 500ms 1 normal forwards;
+	position: absolute;
+	transform: rotateX(90deg);
 }
 .top > h1 {
 	transform: translateY(33%);
@@ -146,7 +165,23 @@ footer svg path {
 footer svg:hover path {
 	fill: var(--primary2);
 }
-@media only screen and (max-width: 375px) {
+@keyframes downflip {
+	from {
+		transform: rotateX(0deg);
+	}
+	to {
+		transform: rotateX(90deg);
+	}
+}
+@keyframes upflip {
+	from {
+		transform: rotateX(90deg);
+	}
+	to {
+		transform: rotateX(0deg);
+	}
+}
+@media only screen and (max-width: 715px) {
   body {
 		font-size: 10px;
   }
@@ -162,7 +197,7 @@ footer svg:hover path {
 		transform: translateY(41%);
 	}
 	.bottom {
-		transform: translateY(-4px);
+		margin-bottom: 4px;
 		border-radius: 0 0 4px 4px;
 	}
 	.bottom > h1 {
@@ -179,6 +214,9 @@ footer svg:hover path {
 		border-bottom-right-radius: 0;
 		border-top-left-radius: 4px;
 		border-bottom-left-radius: 4px;
+	}
+	.bottom::after, .bottom::before {
+		bottom: 43%;
 	}
 	.countdown {
 		grid-gap: 15px;
